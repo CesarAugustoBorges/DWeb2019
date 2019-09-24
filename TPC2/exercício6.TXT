@@ -1,0 +1,1 @@
+a) //IDENTI[normalize-space(../CONCEL/text())="Amares"]

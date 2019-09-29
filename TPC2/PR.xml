@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-record>
+    <title subtitle="project-record e arqueossiteos" >TPC2</title>
+    <begin-date>23-09-2019</begin-date>
+    <end-date>30-09-2019</end-date>
+    <link ref="toAdd">
+        <supervisor>José Carlos Leite Ramalho</supervisor>
+    </link>
+    <workteam>
+        <collaborator>
+            <name></name>
+            <number></number>
+            <email></email>
+            <github>
+                <link ref="https://github.com/CesarAugustoBorges">CesarAugustoBorges</link>
+            </github>
+        </collaborator>
+    </workteam>
+    <abstract>
+        Inserir texto aqui
+    </abstract>
+    <deliverables>
+        <deliverable>
+            <link ref="./DTD/PR.dtd">PR.dtd</link>
+        </deliverable>
+    </deliverables>
+</project-record>

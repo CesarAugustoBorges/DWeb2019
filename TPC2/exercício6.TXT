@@ -1,1 +1,3 @@
 a) //IDENTI[normalize-space(../CONCEL/text())="Amares"]
+b) //TIPO[@ASSUNTO="arqueossitio"]/../CONCEL
+c) //CONCEL[normalize-space(.)="Montalegre"]/../DESCRI

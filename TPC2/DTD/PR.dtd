@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!ELEMENT project-record (key-name, title, subtitle?, begin-date, end-date, supervisor, workteam, abstract, deliverables)>
+<!ELEMENT project-record (key-name, title, begin-date, end-date, supervisor, workteam, abstract, deliverables)>
 <!ELEMENT key-name (#PCDATA)>
 <!ELEMENT title (#PCDATA)>
-<!ELEMENT subtitle (#PCDATA)>
+<!ATTLIST title 
+            subtitle CDATA #IMPLIED>
+
 <!ELEMENT begin-date (#PCDATA)>
 <!ELEMENT end-date (#PCDATA)>
-<!ELEMENT supervisor (link) >
+<!ELEMENT supervisor (#PCDATA) >
 
 <!ELEMENT workteam  (collaborator+)>
 <!ELEMENT collaborator (name, number, email, github)>

@@ -3,9 +3,9 @@
     <title subtitle="project-record e arqueossiteos" >TPC2</title>
     <begin-date>23-09-2019</begin-date>
     <end-date>30-09-2019</end-date>
-    <link ref="www.di.uminho.pt/~jcr">
-        <supervisor>José Carlos Leite Ramalho</supervisor>
-    </link>
+    <supervisor>
+        <link ref="www.di.uminho.pt/~jcr">José Carlos Leite Ramalho</link>
+    </supervisor>
     <workteam>
         <collaborator>
             <name>César Augusto da Costa Borges</name>

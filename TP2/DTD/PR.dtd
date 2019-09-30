@@ -7,7 +7,7 @@
 
 <!ELEMENT begin-date (#PCDATA)>
 <!ELEMENT end-date (#PCDATA)>
-<!ELEMENT supervisor (#PCDATA) >
+<!ELEMENT supervisor (link) >
 
 <!ELEMENT workteam  (collaborator+)>
 <!ELEMENT collaborator (name, number, email, github)>

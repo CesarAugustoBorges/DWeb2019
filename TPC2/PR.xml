@@ -3,25 +3,41 @@
     <title subtitle="project-record e arqueossiteos" >TPC2</title>
     <begin-date>23-09-2019</begin-date>
     <end-date>30-09-2019</end-date>
-    <link ref="toAdd">
+    <link ref="www.di.uminho.pt/~jcr">
         <supervisor>José Carlos Leite Ramalho</supervisor>
     </link>
     <workteam>
         <collaborator>
-            <name></name>
-            <number></number>
-            <email></email>
+            <name>César Augusto da Costa Borges</name>
+            <number>a81644</number>
+            <email>cesar.a.borges98@gmail.com</email>
             <github>
                 <link ref="https://github.com/CesarAugustoBorges">CesarAugustoBorges</link>
             </github>
         </collaborator>
     </workteam>
     <abstract>
-        Inserir texto aqui
+        <paragraph>
+            Resolução dos <bold>exercícios 6 e 7</bold> da <link ref="http://www4.di.uminho.pt/~jcr/XML/CURSOS/PED2008/fichas/ficha3/index.html"><bold>ficha 3</bold></link>
+            e construção do DTD do project record.
+        </paragraph>
+        <paragraph>
+            O trabalho contempla os <bold>DTDs</bold> na pasta <link ref="./DTD"><italic>DTD</italic></link> e os <bold>Schemas</bold> em <link ref="./Schema"><italic>Schema</italic></link>
+        </paragraph>
     </abstract>
     <deliverables>
         <deliverable>
-            <link ref="./DTD/PR.dtd">PR.dtd</link>
+            <link ref="./DTD/PR.dtd">DTD do project record (DTD)</link>
+        </deliverable>
+        <deliverable>
+            <link ref="./exercicio6.txt">Resolução do exercicio 6 (TXT)</link>
+        </deliverable>
+        <deliverable>
+            <link ref="./DTD/ARQSITS.dtd">DTD dos arqueossitios (TXT)</link>
+        </deliverable>
+        <deliverable>
+            <link ref="./Schema/ARQSITS.xsd">Schema dos aqueossitios (XSD)</link>
         </deliverable>
     </deliverables>
+    <date>30-09-2019</date>
 </project-record>

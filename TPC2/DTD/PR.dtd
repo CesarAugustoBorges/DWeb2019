@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!ELEMENT project-record (key-name, title, begin-date, end-date, supervisor, workteam, abstract, deliverables)>
+<!ELEMENT project-record (key-name, title, begin-date, end-date, supervisor, workteam, abstract, deliverables, date)>
 <!ELEMENT key-name (#PCDATA)>
 <!ELEMENT title (#PCDATA)>
 <!ATTLIST title 
@@ -12,10 +12,15 @@
 <!ELEMENT workteam  (collaborator+)>
 <!ELEMENT collaborator (name, number, email, github)>
 
-<!ELEMENT abstract (#PCDATA|link)* >
+<!ELEMENT abstract (paragraph)* >
+<!ELEMENT paragraph (#PCDATA|link|bold|italic)*>
+<!ELEMENT bold (#PCDATA) >
+<!ELEMENT italic (#PCDATA) >
 
 <!ELEMENT deliverables (deliverable)* >
 <!ELEMENT deliverable (link) >
+
+<!ELEMENT date (#PCDATA) >
 
 <!ELEMENT name (#PCDATA) >
 <!ELEMENT number (#PCDATA) >

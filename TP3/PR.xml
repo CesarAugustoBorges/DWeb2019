@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr>
+    <metadata>
+        <keyname>Transformation </keyname>
+        <title>Trabalho prático 3</title>
+        <subtitle>Stylesheets (XSLT)</subtitle>
+        <supervisor homepage="www.di.uminho.pt/~jcr">José Carlos Leite Ramalho</supervisor>
+        <bdate>01-10-2019</bdate>
+        <edate>07-10-2019</edate>
+    </metadata>
+    <workteam>
+        <worker>
+            <identifier>a81644</identifier>
+            <name>César Augusto da Costa  Borges</name>
+            <email>cesar.a.borges98@gmail.com</email>
+            <git>https://github.com/CesarAugustoBorges</git>
+        </worker>
+    </workteam>
+    <abstract>
+        <p>Foi criado um stylesheet para transformar o project record no formato <b>xml</b> para <b>xhtml</b></p>
+        <p>Foi criado um stylesheet para criar um website sobre <u>arqueossitios</u> (<xref url="www.google.com">google</xref>)</p>
+    </abstract>
+    <deliverables>
+        <deliverable path="PR.dtd">PR proposto (DTD)</deliverable>
+        <deliverable path="PR.xsl">PR Stylesheet (XSL)</deliverable>
+        <deliverable path="PR.html">PR page (xHTML)</deliverable>
+    </deliverables>
+</pr>

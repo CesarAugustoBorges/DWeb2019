@@ -17,12 +17,19 @@
         </worker>
     </workteam>
     <abstract>
-        <p>Foi criado um stylesheet para transformar o project record no formato <b>xml</b> para <b>xhtml</b></p>
-        <p>Foi criado um stylesheet para criar um website sobre <u>arqueossitios</u> (<xref url="www.google.com">google</xref>)</p>
+        <p>Foi criado um stylesheet para transformar o project record no formato <b>xml</b> para <b>xhtml</b>, tendo já disponível o dtd fornecido pelo <i>supervisor</i></p>
+        <p>Foi criado um stylesheet para criar um website sobre <u>arqueossitios</u>, tendo como como base um arquivo fornecido pelo <i>supervisor</i>. Foi gerada uma página por cada
+        registo de arqueossitio e cada registo pode ser acedido pela página principal <xref url="html/index.html">(index)</xref> que é apenas usada como indíce. A páginal principal
+            e as páginas de cada registo estão na pasta <xref url="./html"><b>html</b></xref>. Ainda se consta que foi usado <i>bookmarks</i> para o regresso de cada página relativa
+        a um registo à principal através de uma âncora.</p>
     </abstract>
     <deliverables>
         <deliverable path="PR.dtd">PR proposto (DTD)</deliverable>
         <deliverable path="PR.xsl">PR Stylesheet (XSL)</deliverable>
         <deliverable path="PR.html">PR page (xHTML)</deliverable>
+        <deliverable path="arq.xml">Arquivo de arqueossitios (XML)</deliverable>
+        <deliverable path="arq.dtd">DTD autogerado do arquivo de arqueossitios (DTD)</deliverable>
+        <deliverable path="arq.xsl">Arqueossiios stylesheet (XSL)</deliverable>
+        <deliverable path="html/index.html">Página web inicial dos arqueossitios</deliverable>
     </deliverables>
 </pr>

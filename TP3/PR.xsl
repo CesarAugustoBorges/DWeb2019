@@ -8,7 +8,7 @@
                 <head>
                     <title><xsl:value-of select="pr/title"/></title>
                     <meta charset="UTF-8"/>
-                    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>                
+                    <link rel="stylesheet" href="html/w3.css"/>                
                 </head>
                 <body>
                     <xsl:apply-templates/>
@@ -32,11 +32,11 @@
         <table class="w3-table">
             <tr>
                 <td class="w3-left-align">
-                    <b>Supervisor: </b> <xsl:value-of select="supervisor"/>
+                    <b>Supervisor: </b><a class="w3-text-indigo" href="https://{supervisor/@homepage}"><xsl:value-of select="supervisor"/></a>
                 </td>
                 <td class="w3-right-align">
-                    <b>data de inicio: </b> <xsl:value-of select="bdate"/><br/>
-                    <b>data de conclusão: </b> <xsl:value-of select="edate"/>
+                    <b>Initial date: </b> <xsl:value-of select="bdate"/><br/>
+                    <b>Final date: </b> <xsl:value-of select="edate"/>
                 </td>
             </tr>
         </table>
@@ -93,7 +93,9 @@
     </xsl:template>
     
     <xsl:template match="xref">
-        <a class="w3-text-indigo" href="{@url}"><xsl:value-of select="."/></a>
+        <a class="w3-text-indigo" href="{@url}">
+            <xsl:apply-templates/>
+        </a>
     </xsl:template>
     
     <xsl:template match="deliverables">

@@ -1,31 +1,7 @@
 var http = require('http')
 var url = require('url')
 var fs = require('fs')
-//var xsltproc = require('xsltproc')
 var port = 7777
-
-/*
-var server = http.createServer(function(req, res){
-    var partes = req.url.split('/')
-    var fileId = partes[partes.length - 1]
-    console.log(xsltproc)
-
-    var xmlProcessed = xsltproc.transform('arq2html.xsl', './dataset/arq' + fileId + '.xml', {"profile": true})
-    console.log(xmlProcessed)
-    xmlProcessed.stdout.on('data', function(data){
-        res.writeHead(200, {
-            "Content-Type": "text/html"
-        });
-        res.write(data);
-        res.end();
-    })
-    xmlProcessed.stderr.on('data', function(data){
-        res.writeHead(200, {'Content-Type': 'text/text'})
-        res.write('Error on processing data')
-        res.end()
-    })
-})
-*/
 
 var server = http.createServer(function(req, res){
     var partes = req.url.split('/')

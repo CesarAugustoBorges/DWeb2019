@@ -6,24 +6,28 @@ var port = 7777
 var server = http.createServer(function(req, res){
     var partes = req.url.split('/')
     var fileId = partes[partes.length - 1]
+    var fileIdSplit = fileId.split('.')
+    var fileType = fileIdSplit[partes.length - 1]
     console.log("fileId: " + fileId);
-    if(fileId.match(/arq2html.xsl/))
-        sendFile(res, "./arq2html.xsl", "xsl")
-    else if(fileId.match(/index/))
-        sendFile(res, "./index.html", "html")
+    if(fileType != undefined){
+        console.log("fileType: " + fileType)
+        if(fileType == "html" && !fileId.match(/index/)) 
+            fileId = "html/" + fileId
+        sendFile(res, fileId, fileType)
+    }
     else
         sendFile(res, "./dataset/arq" + fileId + ".xml", "xml")
 })
 
 function error(res, message){
     console.log("MY ERROR: " + message)
-    res.writeHead(404, {'Content-Type': 'text/text'})
-    res.end(message)    
+    res.writeHead(404, {'Content-Type': 'text/html'})
+    res.end("<html><head></head><body><h1>" + message + "</h1></body>")    
 }
 
 function sendFile(res, filePath, contentType){
     fs.readFile(filePath, function(err, data){
-        if(err) error(res, "Can't load xsl file");
+        if(err) error(res, "Can't load file: \"" + filePath + "\"");
         else sendData(res, data, contentType)
     })  
 }

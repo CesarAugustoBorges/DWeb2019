@@ -14,7 +14,7 @@
             <body>
                 <div class="w3-container">
                     <address>
-                        <a href="index.html#{generate-id()}">Voltar atrás</a>
+                        <a href="{CONCEL}.html">Voltar atrás</a>
                     </address>
                     <div class="w3-center">
                         <h1><xsl:value-of select="normalize-space(IDENTI)"/> - <xsl:value-of select="CODADM"/></h1>
@@ -149,9 +149,7 @@
     </xsl:template>
     
     <xsl:template match="LIGA">
-        <b>
-            <xsl:apply-templates/>
-        </b>
+        <b><xsl:text> </xsl:text><xsl:apply-templates/><xsl:text> </xsl:text></b>
     </xsl:template>
     
 </xsl:stylesheet>

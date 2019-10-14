@@ -12,15 +12,16 @@
                 <link rel="stylesheet" href="w3.css"/>     
             </head>
             <body>
-                    <h1>Indice de Aquessitios</h1>
+                <div class="w3-container">
+                    <h1 class="w3-center">Indice de Aquessitios</h1>
                     <ul>
                         <xsl:apply-templates select="//ARQELEM" mode="indice">
-                            <xsl:sort select="normalize-space(CONCEL)"/>
+                            <xsl:sort select="CONCEL"/>
                         </xsl:apply-templates>
                     </ul>
-                
-                <xsl:apply-templates/>
+                </div>
             </body>
+            <xsl:apply-templates/>
         </xsl:result-document>
     </xsl:template>
     
@@ -39,7 +40,7 @@
    
     
     <xsl:template match="ARQELEM[not(preceding::CONCEL=./CONCEL)]" mode="indice">
-        <li>
+        <li class="w3-text-indigo">
             <a href="{translate(CONCEL, ' ', '')}.html">
                 <xsl:value-of select="CONCEL"/>
             </a>
@@ -48,8 +49,8 @@
     </xsl:template>
     
     <xsl:template match="ARQELEM" mode="indiceOfConcel">
-        <li>
-            <a href="{count(preceding-sibling::*)+1}">
+        <li class="w3-text-indigo">
+            <a  href="{count(preceding-sibling::*)+1}">
                 <xsl:value-of select="IDENTI"/>
             </a>
         </li>
@@ -65,12 +66,15 @@
                     <link rel="stylesheet" href="w3.css"/>  
                 </head>
                 <body>
-                    <h1><xsl:value-of select="."/></h1>
-                    <ol>
-                        <xsl:apply-templates select="//ARQELEM[CONCEL=$c]" mode="indiceOfConcel">
-                            <xsl:sort select="count(preceding-sibling::*)"></xsl:sort>
-                        </xsl:apply-templates>
-                    </ol>
+                    <div class="w3-container">
+                        <a href="index.html">Voltar atrás</a>
+                        <h1 class="w3-center"><xsl:value-of select="."/></h1>
+                        <ol>
+                            <xsl:apply-templates select="//ARQELEM[CONCEL=$c]" mode="indiceOfConcel">
+                                <xsl:sort select="count(preceding-sibling::*)"></xsl:sort>
+                            </xsl:apply-templates>
+                        </ol>
+                    </div>
                 </body>
             </html>
         </xsl:result-document>

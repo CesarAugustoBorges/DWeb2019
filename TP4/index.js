@@ -8,6 +8,10 @@ var server = http.createServer(function(req, res){
     var fileId = partes[partes.length - 1]
     var fileIdSplit = fileId.split('.')
     var fileType = fileIdSplit[partes.length - 1]
+    if(fileId == ""){
+        fileId = "index.html"
+        fileType = "html"
+    } 
     console.log("fileId: " + fileId);
     if(fileType != undefined){
         console.log("fileType: " + fileType)

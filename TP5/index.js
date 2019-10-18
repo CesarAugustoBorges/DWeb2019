@@ -49,19 +49,26 @@ var server = http.createServer((req, res)=> {
                         tarefas.push(tarefa)
                         jsonfile.writeFile(myBD, tarefas, erro =>{
                             if(erro) console.log(erro)
-                            else console.log('Registo gravado com sucesso')
-                            res.writeHead(200, {
-                                'Content-Type' : 'text/html; charset=utf-8'
-                            })
-                            res.write(pug.renderFile('index.pug', {listaTarefas:tarefas}))
-                            res.end()
+                            else{
+                                console.log('Registo gravado com sucesso')
+                                res.writeHead(200, {
+                                    'Content-Type' : 'text/html; charset=utf-8'
+                                })
+                                res.write(pug.renderFile('index.pug', {listaTarefas:tarefas}))
+                                res.end()
+                            } 
                         })
+                    }
+                    else {
+                    res.writeHead(200, {
+                        'Content-Type' : 'text/html; charset=utf-8'
+                    })
+                    res.write(pug.renderFile('erro.pug', {e:erro}))
+                    res.end()
                     }
                 })
             })
-        }
-        if(urlPath.match(/removerTarefa\/[0-9]+/)){
-            console.log("Removing element...")
+        } else if(urlPath.match(/removerTarefa\/[0-9]+/)){
             let split = urlPath.split('/')
             let index = split[2] - '0'
             jsonfile.readFile(myBD, (erro, tarefas)=>{
@@ -87,13 +94,28 @@ var server = http.createServer((req, res)=> {
                     res.end()
                 }
             })
+        } else {
+            res.writeHead(200, {
+                'Content-Type' : 'text/html; charset=utf-8'
+            })
+            res.write(pug.renderFile('erro.pug', {e: urlPath + ' not found'}))
+            res.end()
         }
     } else if(req.method == 'DELETE'){
+        res.writeHead(200, {
+            'Content-Type' : 'text/html; charset=utf-8'
+        })
+        res.write(pug.renderFile('erro.pug', {e: req.method + ' not supported'}))
+        res.end()
         // TODO
         // need a way to get a DELETE method from index.pug
         // after -> move route 'removerTarefa/index' here
     }  else{
+        res.writeHead(200, {
+            'Content-Type' : 'text/html; charset=utf-8'
+        })
         res.write(pug.renderFile('erro.pug', {e: req.method + ' not supported'}))
+        res.end()
     }
 })
 

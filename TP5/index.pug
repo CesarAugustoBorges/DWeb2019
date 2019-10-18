@@ -15,5 +15,18 @@ block content
                     input.w3-btn.w3-blue-grey(type='submit' value='Adicionar Tarefa')
                 hr
                 h3 Tarefas agendadas
+                table
+                    tr
+                        th Descrição
+                        th Data a finalizar 
+                        th     
+                    - for(var i = 0; i < listaTarefas.length; i++)
+                        tr
+                            td= listaTarefas[i].descricao
+                            td= listaTarefas[i].dataLimite
+                            td 
+                                form(action=('/removerTarefa/'+i) method='Post')
+                                    input.w3-btn.w3-blue-grey(type='submit' value='Remover Tarefa')
+                
             footer.w3-container.w3-teal
                 address Gerado por Gestor de Tarefas

@@ -17,11 +17,14 @@ var server = http.createServer((req, res)=> {
 
     if(req.method == 'GET'){
         if((purl.pathname == '/') || (purl.pathname == '/tarefas')){
-            res.writeHead(200, {
-                'Content-Type' : 'text/html; charset=utf-8'
+            jsonfile.readFile(myBD, (erro, tarefas)=>{
+                res.writeHead(200, {
+                    'Content-Type' : 'text/html; charset=utf-8'
+                })
+                if(!erro) res.write(pug.renderFile('index.pug', {listaTarefas: tarefas}))
+                else res.write(pug.renderFile('erro.pug', {e: "Erro na leitura da BD..."}))
+                res.end()
             })
-            res.write(pug.renderFile('index.pug'))
-            res.end();
         }else if(purl.pathname == "/w3.css"){
             res.writeHead(200, {
                 'Content-Type' : 'text/css; charset=utf-8'
@@ -31,19 +34,81 @@ var server = http.createServer((req, res)=> {
                 else res.write(pug.renderFile('erro.pug', {e:erro}))
                 res.end()
             })
+        } else {
+            res.writeHead(200, {
+                'Content-Type' : 'text/html; charset=utf-8'
+            })
+            res.write(pug.renderFile('erro.pug', {e: urlPath + ' not found'}))
+            res.end()
         }
     } else if(req.method == 'POST'){
-        if(urlPath == 'adicionarTarefa'){
-
+        if(urlPath == '/adicionarTarefa'){
+            recuperaTarefa(req, tarefa => {
+                jsonfile.readFile(myBD, (erro, tarefas)=>{
+                    if(!erro){ 
+                        tarefas.push(tarefa)
+                        jsonfile.writeFile(myBD, tarefas, erro =>{
+                            if(erro) console.log(erro)
+                            else console.log('Registo gravado com sucesso')
+                            res.writeHead(200, {
+                                'Content-Type' : 'text/html; charset=utf-8'
+                            })
+                            res.write(pug.renderFile('index.pug', {listaTarefas:tarefas}))
+                            res.end()
+                        })
+                    }
+                })
+            })
+        }
+        if(urlPath.match(/removerTarefa\/[0-9]+/)){
+            console.log("Removing element...")
+            let split = urlPath.split('/')
+            let index = split[2] - '0'
+            jsonfile.readFile(myBD, (erro, tarefas)=>{
+                if(!erro){ 
+                    tarefas.splice(index, 1)
+                    jsonfile.writeFile(myBD, tarefas, erro =>{
+                        if(erro) console.log(erro)
+                        else{
+                            console.log('Registo ' + index + ' removido com sucesso')
+                            res.writeHead(200, {
+                                'Content-Type' : 'text/html; charset=utf-8'
+                            })
+                            res.write(pug.renderFile('index.pug', {listaTarefas:tarefas}))
+                            res.end()
+                        }
+                    })
+                }
+                else {
+                    res.writeHead(200, {
+                        'Content-Type' : 'text/html; charset=utf-8'
+                    })
+                    res.write(pug.renderFile('erro.pug', {e:erro}))
+                    res.end()
+                }
+            })
         }
     } else if(req.method == 'DELETE'){
-        if(urlPath == 'removerTarefa'){
-
-        }
+        // TODO
+        // need a way to get a DELETE method from index.pug
+        // after -> move route 'removerTarefa/index' here
     }  else{
-
+        res.write(pug.renderFile('erro.pug', {e: req.method + ' not supported'}))
     }
 })
 
 server.listen(7777)
 console.log("Server tarefas is listening at port: " + port )
+
+
+function recuperaTarefa(request, callback){
+    if(request.headers['content-type'] == 'application/x-www-form-urlencoded'){
+        let body = ''
+        request.on('data', bloco => {
+            body += bloco.toString()
+        })
+        request.on('end', ()=>{
+            callback(parse(body))
+        })
+    }
+}

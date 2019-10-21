@@ -30,12 +30,14 @@ block content
                     table.w3-table.w3-striped
                         tr
                             th(width="70%").w3-text-teal Descrição
-                            th(width="17%").w3-text-teal Data a finalizar 
+                            th(width="10%").w3-text-teal Data a finalizar 
+                            th.w3-text-teal Tempo restante
                             th     
                         - for(var i = 0; i < listaTarefas.length; i++)
                             tr
                                 td(width="70%").w3-text-grey= listaTarefas[i].descricao
-                                td(width="17%").w3-text-grey= listaTarefas[i].dataLimite
+                                td(width="10%").w3-text-grey= listaTarefas[i].dataLimite
+                                td(width="10%").w3-text-grey= listaTarefas[i].tempoRestante
                                 td 
                                     form(action=('/removerTarefa/'+i) method='Post')
                                         input.w3-btn.w3-blue-grey(class="deleteRequest" type='submit' value='Remover Tarefa')

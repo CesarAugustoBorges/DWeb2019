@@ -18,12 +18,18 @@ var server = http.createServer((req, res)=> {
     if(req.method == 'GET'){
         if((purl.pathname == '/') || (purl.pathname == '/tarefas')){
             jsonfile.readFile(myBD, (erro, tarefas)=>{
+                processTarefas(tarefas)
                 res.writeHead(200, {
                     'Content-Type' : 'text/html; charset=utf-8'
                 })
-                if(!erro) res.write(pug.renderFile('index.pug', {listaTarefas: tarefas}))
-                else res.write(pug.renderFile('erro.pug', {e: "Erro na leitura da BD..."}))
-                res.end()
+                if(!erro){
+                    res.write(pug.renderFile('index.pug', {listaTarefas: tarefas}))
+                    res.end()
+                } 
+                else{
+                    res.write(pug.renderFile('erro.pug', {e: "Erro na leitura da BD..."}))
+                    res.end()
+                } 
             })
         }else if(purl.pathname == "/w3.css"){
             res.writeHead(200, {
@@ -51,11 +57,7 @@ var server = http.createServer((req, res)=> {
                             if(erro) console.log(erro)
                             else{
                                 console.log('Registo gravado com sucesso')
-                                res.writeHead(200, {
-                                    'Content-Type' : 'text/html; charset=utf-8'
-                                })
-                                res.write(pug.renderFile('index.pug', {listaTarefas:tarefas}))
-                                res.end()
+                                redirect(res, tarefas)
                             } 
                         })
                     }
@@ -78,11 +80,7 @@ var server = http.createServer((req, res)=> {
                         if(erro) console.log(erro)
                         else{
                             console.log('Registo ' + index + ' removido com sucesso')
-                            res.writeHead(200, {
-                                'Content-Type' : 'text/html; charset=utf-8'
-                            })
-                            res.write(pug.renderFile('index.pug', {listaTarefas:tarefas}))
-                            res.end()
+                            redirect(res, tarefas)
                         }
                     })
                 }
@@ -102,14 +100,38 @@ var server = http.createServer((req, res)=> {
             res.end()
         }
     } else if(req.method == 'DELETE'){
-        res.writeHead(200, {
-            'Content-Type' : 'text/html; charset=utf-8'
-        })
-        res.write(pug.renderFile('erro.pug', {e: req.method + ' not supported'}))
-        res.end()
         // TODO
         // need a way to get a DELETE method from index.pug
         // after -> move route 'removerTarefa/index' here
+        if(urlPath.match(/removerTarefa\/[0-9]+/)){
+            let split = urlPath.split('/')
+            let index = split[2] - '0'
+            jsonfile.readFile(myBD, (erro, tarefas)=>{
+                if(!erro){ 
+                    tarefas.splice(index, 1)
+                    jsonfile.writeFile(myBD, tarefas, erro =>{
+                        if(erro) console.log(erro)
+                        else{
+                            console.log('Registo ' + index + ' removido com sucesso')
+                            redirect(res, tarefas)
+                        }
+                    })
+                }
+                else {
+                    res.writeHead(200, {
+                        'Content-Type' : 'text/html; charset=utf-8'
+                    })
+                    res.write(pug.renderFile('erro.pug', {e:erro}))
+                    res.end()
+                }
+            })
+        } else {
+            res.writeHead(200, {
+                'Content-Type' : 'text/html; charset=utf-8'
+            })
+            res.write(pug.renderFile('erro.pug', {e: req.method + ' not supported'}))
+            res.end()
+        }
     }  else{
         res.writeHead(200, {
             'Content-Type' : 'text/html; charset=utf-8'
@@ -119,9 +141,29 @@ var server = http.createServer((req, res)=> {
     }
 })
 
-server.listen(7777)
-console.log("Server tarefas is listening at port: " + port )
+function redirect(res, tarefas){
+    processTarefas(tarefas)
+    res.writeHead(200, {
+        'Location' : '/'
+    })
+    res.write(pug.renderFile('index.pug', {listaTarefas:tarefas}))
+    res.end()
+}
 
+function processTarefas(tarefas){
+    for(tar of tarefas){
+        var timeLeft = new Date(tar.dataLimite) - Date.now()
+        console.log(timeLeft)
+        var days = Math.abs(Math.ceil(timeLeft/(1000 * 60 * 60 * 24)))
+        if(days != 0){
+            days += " dias"
+            if(timeLeft < 0 ){
+                days += " atrás"
+            }
+        } else days += " dias"
+        tar.tempoRestante = days
+    }
+}
 
 function recuperaTarefa(request, callback){
     if(request.headers['content-type'] == 'application/x-www-form-urlencoded'){
@@ -134,3 +176,6 @@ function recuperaTarefa(request, callback){
         })
     }
 }
+
+server.listen(7777)
+console.log("Server tarefas is listening at port: " + port )

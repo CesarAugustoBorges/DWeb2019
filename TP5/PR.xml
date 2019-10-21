@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr>
+    <metadata>
+        <keyname>Node JS</keyname>
+        <title>Trabalho prático 5</title>
+        <subtitle>Gestor de tarefas</subtitle>
+        <supervisor homepage="www.di.uminho.pt/~jcr">José Carlos Leite Ramalho</supervisor>
+        <bdate>15-10-2019</bdate>
+        <edate>21-10-2019</edate>
+    </metadata>
+    <workteam>
+        <worker>
+            <identifier>a81644</identifier>
+            <name>César Augusto da Costa  Borges</name>
+            <email>cesar.a.borges98@gmail.com</email>
+            <git>https://github.com/CesarAugustoBorges</git>
+        </worker>
+    </workteam>
+    <abstract>
+        <p>Para este trabalho prático foi criado um servidor web (<xref url="index.js">index.js</xref>) para 
+            gerir terafas. Este gestor de tarefas permite ao utilizador adicionar uma tarefa, indica a sua descrição e
+            a data em que a tarefa até que a tarefa seja finalizada, ainda foi adicionada a funcionalidade de 
+            remover tarefas</p>
+        <p>O armazenamento das tarefas é feita num ficheiro JSON, <xref url="tarefas.json"> tarefas.json</xref></p>
+        <p>Para gerar o HTML desejado foi utilizada o <b>pug</b>, isto é, os ficheiros <xref url="layout.pug">layout.pug</xref> 
+            (<i>layout</i> dos seguintes ficheiros), <xref url="erro.pug">erro.pug</xref> (geração de páginas de erro) e 
+            <xref url="index.pug">index.pug</xref> (o gestor de tarefas)</p>
+        <p>Ainda foi feito, como trabalho adicional, a remoção das tarefas pelo utilizador, neste caso, embora não seja a
+           forma convencionada, é feita através de um método <b>post</b>, visto que não foi encontrada um alternativa plausível
+           , na minha opinião, aos forms que não suportam o método <b>delete</b>. Mesmo assim, esta funcionalidade também é tratada pelo
+           servidor caso haja um método <b>delete</b> válido, verificada pela ferramenta <u>Postman</u>, pois pela aplicação em si
+           não o é possível com a versão atual</p>
+    </abstract>
+    <deliverables>
+        <deliverable path="layout.pug">Layout utilizado para as restantes páginas (PUG)</deliverable>
+        <deliverable path="erro.pug">Página de erro (PUG)</deliverable>
+        <deliverable path="index.pug">Página dedicada ao gestor de tarefas (PUG)</deliverable>
+        <deliverable path="index.js">Servidor web do gestor de tarefas (JS) </deliverable>
+        <deliverable path="stylesheets/w3.css">W3 StyleSheet (CSS)</deliverable>
+        <deliverable path="tarefas.json">Base de dados para as tarefas</deliverable>
+    </deliverables>
+</pr>

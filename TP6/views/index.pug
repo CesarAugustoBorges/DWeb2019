@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 Musicas do aquivo sonoro
+  .w3-container
+    ul
+      each musica in musicas
+        a(href='musica/' + musica.tit)= musica.tit

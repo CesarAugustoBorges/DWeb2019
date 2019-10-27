@@ -1,0 +1,44 @@
+extends layout
+
+block content
+    if musica
+        script.
+            - var oldTitle = musica.tit
+        .w3-container
+            .w3-row
+                .w3-half.w3-container
+                    label titulo
+                    input.w3-input.w3-border.w3-light-grey(id="tit" type='text' name='tit' value=musica.tit required)
+                .w3-half.w3-container
+                    label Província
+                    input.w3-input.w3-border.w3-light-grey(id="prov" type='text' name='prov' value=musica.prov required)
+            .w3-row
+                .w3-half.w3-container
+                    label Localidade
+                    input.w3-input.w3-border.w3-light-grey(id="local" type='text' name='local' value=musica.local required)
+                .w3-half.w3-container
+                    label Musico
+                    input.w3-input.w3-border.w3-light-grey(id="musico" type='text' name='musico' value=musica.musico required)
+            .w3-row
+                    input.w3-btn.w3-blue-grey(type='submit' onclick="editaItem('" + musica.tit + "')" value='Adicionar Música')                     
+            hr
+    else 
+        .w3-container
+            form.w3-container(action="/adicionarMusica" method='Post').w3-container
+                .w3-row
+                    .w3-half.w3-container
+                        label titulo
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='tit' required)
+                    .w3-half.w3-container
+                        label Província
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='prov' required)
+                .w3-row
+                    .w3-half.w3-container
+                        label Localidade
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='local' required)
+                    .w3-half.w3-container
+                        label Musico
+                        input.w3-input.w3-border.w3-light-grey(type='text' name='musico' required)
+                .w3-row
+                    input.w3-btn.w3-blue-grey(type='submit' value='Adicionar Música')                     
+            hr

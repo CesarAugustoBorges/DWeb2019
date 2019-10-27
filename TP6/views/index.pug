@@ -2,7 +2,18 @@ extends layout
 
 block content
   h1 Musicas do aquivo sonoro
+  a(href='form').w3-button.w3-blue-grey Adicionar musica
   .w3-container
-    ul
-      each musica in musicas
-        a(href='musica/' + musica.tit)= musica.tit
+    .w3-row
+      .w3-half
+        label Titulo
+      .w3-half
+        label Opções
+    each musica in musicas
+      .w3-row
+        .w3-half
+          a(href='musica/' + musica.id)= musica.tit
+        .w3-half
+          button.w3-button.w3-blue-grey(onclick="apagaItem('" + musica.id + "')") Apagar
+          a(href='form/' + musica.id).w3-button.w3-blue-grey Editar
+      hr

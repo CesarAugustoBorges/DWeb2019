@@ -29,7 +29,7 @@ block content
                     input.w3-input.w3-border.w3-light-grey(id="ficheiros" type="text" name="ficheiros" value=musica.file)
             .w3-row.w3-container
                     label Observações
-                    textarea.w3-input.w3-border.w3-light-grey(id="observacao" type="text" name="observacao" value=musica.obs)
+                    input.w3-input.w3-border.w3-light-grey(id="observacao" type="text" name="observacao" value=musica.obs)
             .w3-row.w3-container
                     input.w3-btn.w3-blue-grey(type='submit' onclick="editaItem('" + musica.id + "')" value='Editar Música')                     
         footer.w3-light-blue        
@@ -38,7 +38,7 @@ block content
     else 
         .w3-card-4
             header.w3-container.w3-light-blue
-                h3 #{musica.tit}
+                h3 Adicionar música
         .w3-container
             form.w3-container(action="/adicionarMusica" method='Post').w3-container
                 .w3-row
@@ -58,10 +58,10 @@ block content
                 .w3-row
                     .w3-half.w3-container
                         label Instrumentos
-                        input.w3-input.w3-border.w3-light-grey(id="instrumentos" type="text" name="instrumentos" value=musica.inst)
+                        input.w3-input.w3-border.w3-light-grey(id="instrumentos" type="text" name="instrumentos")
                     .w3-half.w3-container
                         label Ficheiros
-                        input.w3-input.w3-border.w3-light-grey(id="ficheiros" type="text" name="ficheiros" value=musica.file)
+                        input.w3-input.w3-border.w3-light-grey(id="ficheiros" type="text" name="ficheiros")
                 .w3-row
                     label Observações
                     textarea.w3-input.w3-border.w3-light-grey(type="text" name="observacao")

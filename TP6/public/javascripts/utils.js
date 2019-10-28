@@ -1,16 +1,15 @@
-
-
 function apagaItem(ident){
     console.log('Vou tentar apagar o ' + ident + ' ...')
     axios.delete('/removerMusica/' + ident)
         .then(responseDEL => {
             window.location.assign('/')
+            console.log(window.location.search)
             var message = document.getElementById('message')
             if(responseDEL.data == '0') {
-                message.innerHTML = "Música editada com sucesso"
+                message.innerHTML = "Música eleminada com sucesso"
                 message.classList.add("w3-text-green")
             } else {
-                message.innerHTML = "Erro ao editar a música"
+                message.innerHTML = "Erro ao eleminara música"
                 message.classList.add("w3-text-red")
             }
             
@@ -24,7 +23,7 @@ function editaItem(ident){
     musica.local = document.getElementById('local').value;
     musica.musico = document.getElementById('musico').value;
     musica.prov = document.getElementById('prov').value;
-    musica.observacao = document.getElementById('observacao').value
+    musica.obs = document.getElementById('observacao').value
     musica.inst = document.getElementById('instrumentos').value
     musica.file = document.getElementById('ficheiros').value
     //console.log(musica);

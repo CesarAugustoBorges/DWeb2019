@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 const arq = require('./arq');
 const nanoid = require('nanoid');
-const myBD = 'arq.json'
+const url = require('url')
+var {parse} = require('querystring')
 
 /* GET Musica by id. */
 router.get('/musica/:id', function(req, res, next) {
@@ -30,25 +31,15 @@ router.get('/form', function(req, res, next){
 /* GET home page. */
 router.get('/', function(req, res, next) {
   arq.getArquivo((erro,arquivo) => {
-    arquivo.forEach(musica => {
-      if(!musica.musico === 'String'){
-          if(musica.musico === 'Array'){
-            console.log('ARRAY:' + musica.musico)
-            musica.musico = musica.musico.forEach()
-          }
-          else {
-
-            console.log('NotARRAY:' + musica.musico)
-            //musica.musico = musica.musico.#text
-          }
-      }
-    })
     if(erro) res.render('error', {error : erro})
     else{
       res.render('index', { musicas: arquivo })
     } 
   })
 });
+
+
+
 
 /* POST add new music */
 router.post('/adicionarMusica', function(req, res, next){
@@ -70,11 +61,11 @@ router.post('/adicionarMusica', function(req, res, next){
 /* DELETE music by id */
 router.delete('/removerMusica/:id', function(req, res, next){
   arq.removeRegist(req.params.id, erro =>{
-    if(erro) res.render('error', {error : erro})
+    if(erro) res.end('1')
     else{
       arq.getArquivo((erro,arquivo) => {
-        if(erro) res.render('error', {error : erro})
-        else res.render('index', { musicas: arquivo })
+        if(erro)  res.end('1')
+        else res.end('0')
       })
     } 
   })
@@ -83,11 +74,11 @@ router.delete('/removerMusica/:id', function(req, res, next){
 /* PUT music by id */
 router.put('/editarMusica/:id', function(req, res, next){
   arq.updateRegist(req.params.id, req.body, erro => {
-    if(erro) res.render('error', {error : erro})
+    if(erro) res.end('1')
     else {
       arq.getArquivo((erro,arquivo) => {
-        if(erro) res.render('error', {error : erro})
-        else res.render('index', { musicas: arquivo })
+        if(erro) res.end('1')
+        else res.end('0')
       })
     }
   })

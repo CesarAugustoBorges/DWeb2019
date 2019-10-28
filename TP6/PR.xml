@@ -2,7 +2,7 @@
 <pr>
     <metadata>
         <keyname>Node JS</keyname>
-        <title>Trabalho prático 56/title>
+        <title>Trabalho prático 6</title>
         <subtitle>Gestor de tarefas</subtitle>
         <supervisor homepage="www.di.uminho.pt/~jcr">José Carlos Leite Ramalho</supervisor>
         <bdate>22-10-2019</bdate>
@@ -18,28 +18,37 @@
     </workteam>
     <abstract>
         <p>Para este trabalho prático foi criado um servidor web que permite utilizar as operações CRUD num arquivo sonoro </p>
-        <p>O armazenamento do arquivo é feito num ficheiro JSON, <xref url="arq.json"> arq.json</xref></p>
-        <p>Para gerar o HTML desejado foi utilizada o <b>pug</b>, isto é, os ficheiros <xref url="public/views/layout.pug">layout.pug</xref> 
-            (<i>layout</i> dos seguintes ficheiros), <xref url="public/views/erro.pug">erro.pug</xref> (geração de páginas de erro), 
-            <xref url="public/views/index.pug">index.pug</xref> (o gestor de tarefas)</p>
-        <p>Ainda foi feito, como trabalho adicional, a remoção das tarefas pelo utilizador, neste caso, embora não seja a
-           forma convencionada, é feita através de um método <b>post</b>, visto que não foi encontrada um alternativa plausível
-           , na minha opinião, aos forms que não suportam o método <b>delete</b>. Mesmo assim, esta funcionalidade também é tratada pelo
-           servidor caso haja um método <b>delete</b> válido, verificada pela ferramenta <u>Postman</u>, pois pela aplicação em si
-           não o é possível com a versão atual</p>
+        <p>O armazenamento do arquivo é feito num ficheiro JSON, <xref url="arq.json"> arq.json</xref>, este ficheiro foi
+        gerado através de um transformador online, que transformou o arquivo que inicialmente estava em XML para JSON.
+        O ficheiro que inclui todos os dados do arquivo é o <xref url="arqStatic.json">arqStatic.xml</xref> enquanto que o
+        <xref url="arq.xml">arq.xml</xref> é uma copia deste, que já sofreu alterações, inclusivé, uma geração de ids feita
+        pela biblioteca <b>nanoid</b>. A geração dos ids é feita pelo script <xref url="generate_id.js">generate_id.js</xref></p>
+        <p>Para gerar o HTML desejado foi utilizada o <b>pug</b>, isto é, os ficheiros 
+            <xref url="views/layout.pug">layout.pug</xref> (<i>layout</i> dos seguintes ficheiros),
+            <xref url="views/musica.pug">musica.pug</xref> (geração da página de um registo do arquivo)
+            <xref url="views/erro.pug">erro.pug</xref> (geração de páginas de erro), 
+            <xref url="views/form.pug">form.pug</xref> (edição e criação de registos do arquivo) e 
+            <xref url="views/index.pug">index.pug</xref> (página inicial da aplicação)</p>
+        <p>Na página inicial encontra-se a lista dos registo, ordenados alfabéticamente, e alguma informação deste, caso o utilizador queira visualizar
+        um registo deve clicar no título do registo sonoro, caso queira adicionar um novo registo deve clicar no butão no topo
+        da página, caso queira editar ou eliminar um registo deve clicar no botão associado ao registo que se localiza à direita
+        deste</p>
+        <p> Em qualquer página que não seja a inicial, é possivel voltar a esta ao clicar no link que se encontra no fim da página
+        </p>
     </abstract>
     <deliverables>
-        <deliverable path="public/views/layout.pug">Layout de todas as páginas (PUG)</deliverable>
-        <deliverable path="public/views/index.pug">Página inicial da aplicação (PUG)</deliverable>
-        <deliverable path="public/views/form.pug">Página usada para adicionar ou alterar um arquivo sonoro (PUG)</deliverable>
-        <deliverable path="public/views/error.pug">Página de erro (PUG)</deliverable>
-        <deliverable path="public/views/musica.pug">Página usada para visualizar uma arquivo sonoro (PUG)</deliverable>
+        <deliverable path="views/layout.pug">Layout de todas as páginas (PUG)</deliverable>
+        <deliverable path="views/index.pug">Página inicial da aplicação (PUG)</deliverable>
+        <deliverable path="views/form.pug">Página usada para adicionar ou alterar um arquivo sonoro (PUG)</deliverable>
+        <deliverable path="views/error.pug">Página de erro (PUG)</deliverable>
+        <deliverable path="views/musica.pug">Página usada para visualizar uma arquivo sonoro (PUG)</deliverable>
         <deliverable path="routes/index.js">Roteador da aplicação (JS) </deliverable>
         <deliverable path="routes/arq.js">Script que permite executar as funcionalidades CRUD (JS) </deliverable>
         <deliverable path="public/javascripts/utils.js">Funções usadas por parte do cliente (JS) </deliverable>
         <deliverable path="public/javascripts/axios.min.js">Biblioteca externa (JS) </deliverable>
         <deliverable path="public/stylesheets/w3.css">W3 StyleSheet (CSS)</deliverable>
         <deliverable path="arq.json">Base de dados para o arquivo (JSON) </deliverable>
+        <deliverable path="arqStatic.json">Base de dados inicial do arquivo (JSON) </deliverable>
         <deliverable path="arqStatic.json">Base de dados original do arquivo (JSON) </deliverable>
         <deliverable path="generate_id.js">Script usado para gerar identificadores para cada registo do arquivo (JS)</deliverable>
     </deliverables>

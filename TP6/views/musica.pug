@@ -1,6 +1,38 @@
 extends layout
 
 block content
-    h1= musica.tit
-    address
-        a(href="/") Voltar à pagina inicial
+    .w3-card-4
+    header.w3-container.w3-light-blue
+        h3 #{musica.tit}
+    .w3-container
+        .w3-row
+            .w3-half
+                p Musico: 
+                    b=musica.musico 
+            .w3-half    
+                p Duração: 
+                    b=musica.duracao
+        .w3-row
+            .w3-half
+                p Provincia:
+                    b=musica.prov
+            .w3-half
+                p Localidade:
+                    b=musica.prov
+        .w3-row
+        if musica.inst    
+            .w3-half
+                p Instrumentos:
+                    b=musica.inst
+        if musica.file
+            .w3-half
+                p Ficheiro:
+                    b=musica.file        
+        if musica.obs        
+            .w3-row
+                p Observações: 
+                    b=musica.obs
+        a(href='../form/' + musica.id).w3-button.w3-blue-grey Editar
+    footer.w3-light-blue        
+        address.w3-container
+            a(href="/") Voltar à pagina inicial

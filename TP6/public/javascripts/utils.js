@@ -1,7 +1,20 @@
+
+
 function apagaItem(ident){
     console.log('Vou tentar apagar o ' + ident + ' ...')
     axios.delete('/removerMusica/' + ident)
-        .then(response => { window.document.documentElement.innerHTML = response.data})//axios.get('/').then(() => {window.location.assign('/'); console.log(response)}))//window.location.assign('/'))
+        .then(responseDEL => {
+            window.location.assign('/')
+            var message = document.getElementById('message')
+            if(responseDEL.data == '0') {
+                message.innerHTML = "Música editada com sucesso"
+                message.classList.add("w3-text-green")
+            } else {
+                message.innerHTML = "Erro ao editar a música"
+                message.classList.add("w3-text-red")
+            }
+            
+        })
         .catch(error => console.log(error))
 }
 
@@ -11,9 +24,23 @@ function editaItem(ident){
     musica.local = document.getElementById('local').value;
     musica.musico = document.getElementById('musico').value;
     musica.prov = document.getElementById('prov').value;
-    console.log(musica);
+    musica.observacao = document.getElementById('observacao').value
+    musica.inst = document.getElementById('instrumentos').value
+    musica.file = document.getElementById('ficheiros').value
+    //console.log(musica);
     console.log('Vou tentar editar o ' + ident + ' ...')
     axios.put('/editarMusica/' + ident, musica)
-        .then(response => axios.get('/').then(window.location.assign('/')))
+        .then(responseUP =>  {
+            window.location.assign('/')
+            var message = document.getElementById('message')
+            if(responseUP.data == '0') {
+                message.innerHTML = "Música editada com sucesso"
+                message.classList.add("w3-text-green")
+            } else {
+                message.innerHTML = "Erro ao editar a música"
+                message.classList.add("w3-text-red")
+            }
+            
+        })
         .catch(error => console.log(error))
 }

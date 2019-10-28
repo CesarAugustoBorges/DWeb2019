@@ -1,6 +1,59 @@
 const jsonfile = require('jsonfile')
 const myBD = 'arq.json'
 
+function normalizaMusica(musica){
+    //console.log(typeof musica.musico)
+    if(musica.musico){
+        if(typeof musica.musico != 'string'){
+            if(Array.isArray(musica.musico)){
+            //console.log('ARRAY:' + musica.musico)
+            var sb = ""
+            musica.musico.forEach(mus => sb += mus)
+            musica.musico = sb
+            }
+            else {
+            //console.log('NotARRAY:' + musica.musico)
+            musica.musico = musica.musico["#text"]
+            }
+        } 
+    } else {
+        musica.musico = "-"
+    }
+    if(musica.obs){
+        if(typeof musica.obs != 'string'){
+            if(Array.isArray(musica.obs)){
+                //console.log('ARRAY:' + musica.musico)
+                var sb = ""
+                musica.obs.forEach(mus => sb += mus["#text"])
+                musica.obs = sb
+            }
+            else if(Array.isArray(musica.obs["#text"])){
+                var sb = ""
+                musica.obs["#text"].forEach(mus => sb += mus)
+                musica.obs = sb
+            }
+            else {
+            //console.log('NotARRAY:' + musica.musico)
+            musica.obs = musica.obs["#text"]
+            }
+        } 
+    }
+    if(musica.file){
+        if(typeof musica.file != 'string'){
+            if(Array.isArray(musica.file)){
+            //console.log('ARRAY:' + musica.musico)
+            var sb = ""
+            musica.file.forEach(mus => sb += mus["#text"])
+            musica.file = sb
+            }
+            else {
+            //console.log('NotARRAY:' + musica.musico)
+            musica.file = musica.file["#text"]
+            }
+        } 
+    }
+}
+
 module.exports = {
     getArquivo: function(callback){
         jsonfile.readFile(myBD, (erro, arquivo) =>{
@@ -9,6 +62,9 @@ module.exports = {
                 callback(erro, arquivo)
             } 
             else{
+                arquivo.forEach(musica => {
+                    normalizaMusica(musica)
+                  })
                 console.log("Arquivo recuperado com sucesso")
                 arquivo.sort((a, b) => a.tit > b.tit ? 1 : (a.tit < b.tit ? -1 : 0))
                 callback(erro, arquivo)
@@ -28,6 +84,7 @@ module.exports = {
                 if(index == -1){
                     callback(new Error('Música não encontrada'), musicas[index])
                 } else {
+                    normalizaMusica(musicas[index])
                     callback(erro, musicas[index])
                 }
             }
@@ -84,8 +141,11 @@ module.exports = {
     updateRegist: function(id, dados, callback){
         this.removeRegist(id, erro =>{
             if(erro){
+                console.log(erro)
                 callback(erro)
             }else {
+                dados.id = id
+                console.log(dados)
                 this.addRegist(dados, erro => {
                     callback(erro)
                 })

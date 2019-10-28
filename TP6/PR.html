@@ -1,0 +1,61 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="public/stylesheets/w3.css">
+</head>
+<body>
+<div class="w3-container w3-light-grey w3-text-dark-grey">
+    <div class="w3-center w3-text-black">
+<h1>Trabalho prático 5</h1>
+<h3>Gestor de tarefas</h3>
+<h2>Node JS</h2>
+</div>
+<table class="w3-table">
+<tr>
+<td class="w3-left-align"><b>Supervisor: </b><a class="w3-text-indigo" href="https://www.di.uminho.pt/~jcr">José Carlos Leite Ramalho</a></td>
+<td class="w3-right-align"><b>Initial date: </b>15-10-2019<br><b>Final date: </b>21-10-2019</td>
+</tr>
+</table>
+    <h2 class="w3-text-black"><b>Workteam:</b></h2>
+<table class="w3-table w3-striped w3-bordered">
+<tr>
+<th> Identifier</th>
+<th> Name </th>
+<th> Email </th>
+</tr>
+        <tr>
+<td>a81644</td>
+<td><a class="w3-text-indigo" href="https://github.com/CesarAugustoBorges">César Augusto da Costa  Borges</a></td>
+<td>cesar.a.borges98@gmail.com</td>
+</tr>
+    </table>
+<hr>
+    <h2 class="w3-text-black"><b>Abstract:</b></h2>
+        <p>Para este trabalho prático foi criado um servidor web (<a class="w3-text-indigo" href="index.js">index.js</a>) para 
+            gerir terafas. Este gestor de tarefas permite ao utilizador adicionar uma tarefa, indica a sua descrição e
+            a data em que a tarefa até que a tarefa seja finalizada, ainda foi adicionada a funcionalidade de 
+            remover tarefas</p>
+        <p>O armazenamento das tarefas é feita num ficheiro JSON, <a class="w3-text-indigo" href="tarefas.json"> tarefas.json</a></p>
+        <p>Para gerar o HTML desejado foi utilizada o <b>pug</b>, isto é, os ficheiros <a class="w3-text-indigo" href="layout.pug">layout.pug</a> 
+            (<i>layout</i> dos seguintes ficheiros), <a class="w3-text-indigo" href="erro.pug">erro.pug</a> (geração de páginas de erro) e 
+            <a class="w3-text-indigo" href="index.pug">index.pug</a> (o gestor de tarefas)</p>
+        <p>Ainda foi feito, como trabalho adicional, a remoção das tarefas pelo utilizador, neste caso, embora não seja a
+           forma convencionada, é feita através de um método <b>post</b>, visto que não foi encontrada um alternativa plausível
+           , na minha opinião, aos forms que não suportam o método <b>delete</b>. Mesmo assim, esta funcionalidade também é tratada pelo
+           servidor caso haja um método <b>delete</b> válido, verificada pela ferramenta <u>Postman</u>, pois pela aplicação em si
+           não o é possível com a versão atual</p>
+    
+    <h2 class="w3-text-black"><b>Deliverables:</b></h2>
+<ol>
+        <li class="w3-text-indigo"><a href="layout.pug">Layout utilizado para as restantes páginas (PUG)</a></li>
+        <li class="w3-text-indigo"><a href="erro.pug">Página de erro (PUG)</a></li>
+        <li class="w3-text-indigo"><a href="index.pug">Página dedicada ao gestor de tarefas (PUG)</a></li>
+        <li class="w3-text-indigo"><a href="index.js">Servidor web do gestor de tarefas (JS) </a></li>
+        <li class="w3-text-indigo"><a href="stylesheets/w3.css">W3 StyleSheet (CSS)</a></li>
+        <li class="w3-text-indigo"><a href="tarefas.json">Base de dados para as tarefas</a></li>
+    </ol>
+</div>
+</body>
+</html>

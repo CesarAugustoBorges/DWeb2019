@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const arq = require('./arq');
-const jsonfile = require('jsonfile')
+const nanoid = require('nanoid');
 const myBD = 'arq.json'
 
 /* GET Musica by id. */
@@ -30,6 +30,19 @@ router.get('/form', function(req, res, next){
 /* GET home page. */
 router.get('/', function(req, res, next) {
   arq.getArquivo((erro,arquivo) => {
+    arquivo.forEach(musica => {
+      if(!musica.musico === 'String'){
+          if(musica.musico === 'Array'){
+            console.log('ARRAY:' + musica.musico)
+            musica.musico = musica.musico.forEach()
+          }
+          else {
+
+            console.log('NotARRAY:' + musica.musico)
+            //musica.musico = musica.musico.#text
+          }
+      }
+    })
     if(erro) res.render('error', {error : erro})
     else{
       res.render('index', { musicas: arquivo })
@@ -39,7 +52,8 @@ router.get('/', function(req, res, next) {
 
 /* POST add new music */
 router.post('/adicionarMusica', function(req, res, next){
-  var music = req.body;
+  var music = req.body
+  music.id = nanoid()
   arq.addRegist(music, erro => {
     if(erro) res.render('error', {error : erro})
     else{

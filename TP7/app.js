@@ -4,7 +4,7 @@ var path = require('path');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/filmes', {useNewUrlParser: true})
+mongoose.connect('mongodb://127.0.0.1:27017/filmes', {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => console.log('Mongo ready: ' + mongoose.connection.readyState))
   .catch(() => console.log('Mongo: erro na conexão'))
 

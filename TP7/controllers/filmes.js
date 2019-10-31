@@ -31,11 +31,17 @@ Filmes.consultar = id => {
 
 Filmes.apagar = id => {
     return Filme
-        .findOneAndDelete({_id: ObjectId(id)})
+        .findOneAndDelete({_id: ObjectId(id)}, {useFindAndModify : true})
         .exec()
 }
 
 Filmes.adicionar = dados => {
     var filme = new Filme(dados)
     return filme.save()
+}
+
+Filmes.update = (idFilme, dados) => {
+    return Filme.findOneAndUpdate({_id : idFilme}, dados, {useFindAndModify : true})
+        .exec()
+        .then(filmeAntigo => this.consultar(idFilme))
 }

@@ -30,6 +30,8 @@ router.delete('/:idFilme', (req,res) => {
 
 router.put('/:idFilme', (req,res) => {
   Filmes.update(req.params.idFilme, req.body)
+  .then(dados => {console.log(dados); res.jsonp(dados)})
+  .catch(erro => res.status(500).jsonp(erro))
 })
 
 module.exports = router;

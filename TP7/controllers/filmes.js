@@ -8,6 +8,7 @@ Filmes.listar = () => {
     return Filme
         .find({}, {})
         .exec()
+        .then(filmes => filmes.sort((f1, f2) => f1.title > f2.title ? 1 : (f1.title < f2.title ? -1 : 0)))
 }
 
 

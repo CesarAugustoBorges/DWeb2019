@@ -1,0 +1,47 @@
+extends layout
+
+block content
+    if filme        
+        form.w3-card-4(action="/filmes" method='Post')
+            header.w3-container.w3-light-blue
+                h3=filme.title
+            .w3-container
+                .w3-row
+                    .w3-half.w3-container
+                        label Titulo
+                        input.w3-input.w3-border.w3-light-grey(id="titulo" type='text' name='title' value=filme.title required)
+                    .w3-half.w3-container
+                        label Ano
+                        input.w3-input.w3-border.w3-light-grey(id="ano" type='text' name='year' value=filme.year required)
+                .w3-row
+                    .w3-half.w3-container
+                        div(id="generos-container")
+                            label Géneros:
+                            if filme.genres
+                                each genre in filme.genres
+                                    .w3-container
+                                        input.w3-input.w3-border.w3-light-grey(class="generos" type='text' name='genres[]' value=genre).w3-threequarter
+                                        span
+                                            i.fa.fa-minus-square(onclick="removeGrandParentElement(this)").w3-rest
+                        .w3-container
+                            i.fa.fa-plus-square(onclick="addGenre()") 
+                                
+                    .w3-half.w3-container
+                        div(id="atores-container")
+                            label Atores:
+                            if filme.cast
+                                each actor in filme.cast
+                                    .w3-container
+                                        input.w3-input.w3-border.w3-light-grey(class="atores" type='text' name='cast[]' value=actor).w3-threequarter
+                                        span
+                                            i.fa.fa-minus-square(onclick="removeGrandParentElement(this)").w3-rest
+                        .w3-container
+                            i.fa.fa-plus(onclick="addActor()") 
+                .w3-row.w3-container
+                    if Object.keys(filme).length === 0 && filme.constructor === Object
+                        input.w3-btn.w3-blue-grey(type="submit" value="Adicionar filme")
+                    else
+                        botton.w3-btn.w3-blue-grey(onclick="editaItem('" + filme.id + "')")  Editar filme                   
+            footer.w3-light-blue        
+                address.w3-container
+                    a(href="/filmes") Voltar à pagina inicial

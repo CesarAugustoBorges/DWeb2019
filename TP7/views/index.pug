@@ -6,16 +6,19 @@ block content
         h3 Filmes
   .w3-conttainer.w3-white
     .w3-container
+        a.w3-button(href="/filmes/form") Adicionar filme
         table.w3-table.w3-striped
             tr
-              th(width="30%").w3-text-teal Titulo
-              th(width="30%").w3-text-teal Géneros
+              th(width="75%").w3-text-teal Titulo
+              th(width="5%").w3-text-teal Ano
               th.w3-text-teal Opções
             each filme in filmes
               tr
-                td(width="30%").w3-text-teal
+                td(width="75%").w3-text-indigo
                   a(href="/filmes/" + filme._id)= filme.title
-                td(width="30%").w3-text-teal
-                  each genre in filme.genres
-                    span=genre + '; '
+                td(width="5%").w3-text-indigo= filme.year
+                td
+                  button.w3-button.w3-blue-grey(onclick="apagaItem('" + filme._id + "')") Apagar
+                td
+                  a(href='filmes/form/' + filme.id).w3-button.w3-blue-grey Editar
                         

@@ -1,7 +1,33 @@
+extends layout
+
 block content
     .w3-card-4
         header.w3-container.w3-light-blue
-            h3= filme.title
+            h3=filme.title
+        .w3-container
+            .w3-row
+                .w3-half.w3-container
+                    label Titulo
+                    span.w3-input.w3-border.w3-light-grey= filme.title
+                .w3-half.w3-container
+                    label Ano
+                    span.w3-input.w3-border.w3-light-grey= filme.year
+            .w3-row
+                .w3-half.w3-container
+                    div(id="generos-container")
+                        label Géneros:
+                        if filme.genres
+                            each genre in filme.genres
+                                .w3-container
+                                    span.w3-input.w3-border.w3-light-grey.w3-threequarter= genre                           
+                .w3-half.w3-container
+                    div(id="atores-container")
+                        label Atores:
+                        if filme.cast
+                            each actor in filme.cast
+                                .w3-container
+                                    span.w3-input.w3-border.w3-light-grey.w3-threequarter= actor
+                a.w3-btn.w3-blue-grey(href="/filmes/form/" + filme._id)  Editar filme   
     footer.w3-light-blue        
         address.w3-container
             a(href="/filmes") Voltar à pagina inicial

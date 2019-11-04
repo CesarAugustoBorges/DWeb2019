@@ -21,7 +21,7 @@ function editaItem(ident){
         filme.cast.push(actor.value)
     axios.put('/filmes/' + ident, filme)
         .then(responseUP =>  {
-            window.location.assign('/filmes/form/' + ident)
+            window.location.assign('/filmes/' + ident)
         })
         .catch(error => console.log(error))
 }

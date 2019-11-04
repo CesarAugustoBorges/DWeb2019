@@ -7,15 +7,28 @@ const Filmes = module.exports
 Filmes.listar = () => {
     return Filme
         .find({}, {})
+        .sort({'title' : 1})
         .exec()
-        .then(filmes => filmes.sort((f1, f2) => f1.title > f2.title ? 1 : (f1.title < f2.title ? -1 : 0)))
+       
 }
 
+Filmes.listarPagina = (page) => {
+    return Filme
+        .find({}, {})
+        .sort({'title' : 1})
+        .skip((page)*30)
+        .limit(30)
+        .exec()
+}
 
 Filmes.contar = () => {
     return Filme
         .countDocuments()
         .exec()
+}
+
+Filmes.numPagina = () => {
+    return Filmes.contar()/30 + 1
 }
 
 Filmes.projectar = campos => {

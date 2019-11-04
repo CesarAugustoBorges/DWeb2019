@@ -4,9 +4,26 @@ const Filmes = require('../controllers/filmes')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  Filmes.listar()
-    .then(dados => res.render('index', {filmes : dados}))
+  var page = req.query.page;
+  if(page != undefined) page = Number(page)
+  if(!Number.isInteger(page) || page < 0) 
+    page = 0
+  Filmes.listarPagina(page)
+    .then(dados => {
+      res.render('index', {filmes : dados, page: page})
+    })
     .catch(erro => res.render('error', {error: erro}))
+    /*
+  Filmes.listar()
+    .then(dados => {
+      filmes = new Array;
+      var j = 0
+      for( var i = page*30; j < 30 && i < dados.length; j++,i++)
+        filmes.push(dados[i])
+      res.render('index', {filmes : filmes, page: page})
+    })
+    .catch(erro => res.render('error', {error: erro}))
+    */
 });
 
 router.get('/form', (req, res) =>{

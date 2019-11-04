@@ -16,9 +16,11 @@ function editaItem(ident){
     var genres = document.getElementsByClassName('generos')
     var actors = document.getElementsByClassName('atores')
     for(genre of genres)
-        filme.genres.push(genre.value)
+        if(genre.value != "")
+            filme.genres.push(genre.value)
     for(actor of actors)
-        filme.cast.push(actor.value)
+        if(actor.value != "")
+            filme.cast.push(actor.value)
     axios.put('/filmes/' + ident, filme)
         .then(responseUP =>  {
             window.location.assign('/filmes/' + ident)

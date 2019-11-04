@@ -27,8 +27,8 @@ Filmes.contar = () => {
         .exec()
 }
 
-Filmes.numPagina = () => {
-    return Filmes.contar()/30 + 1
+Filmes.numPaginas = () => {
+    return Filmes.contar().then(num =>  {return Math.floor(num/30);})
 }
 
 Filmes.projectar = campos => {

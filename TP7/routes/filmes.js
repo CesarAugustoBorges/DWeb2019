@@ -8,11 +8,16 @@ router.get('/', function(req, res, next) {
   if(page != undefined) page = Number(page)
   if(!Number.isInteger(page) || page < 0) 
     page = 0
-  Filmes.listarPagina(page)
-    .then(dados => {
-      res.render('index', {filmes : dados, page: page})
-    })
-    .catch(erro => res.render('error', {error: erro}))
+  Filmes.numPaginas().then(num =>{
+    if(!Number.isInteger(page) || page > num)
+      page = num 
+    Filmes.listarPagina(page)
+      .then(dados => {
+        res.render('index', {filmes : dados, page: page, numPages: num})
+      })
+      .catch(erro => res.render('error', {error: erro}))  
+  })
+  
     /*
   Filmes.listar()
     .then(dados => {

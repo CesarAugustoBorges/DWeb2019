@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr>
+    <metadata>
+        <keyname>Node JS</keyname>
+        <title>Trabalho prático 7</title>
+        <subtitle>Gestor de filmes</subtitle>
+        <supervisor homepage="www.di.uminho.pt/~jcr">José Carlos Leite Ramalho</supervisor>
+        <bdate>29-10-2019</bdate>
+        <edate>04-11-2019</edate>
+    </metadata>
+    <workteam>
+        <worker>
+            <identifier>a81644</identifier>
+            <name>César Augusto da Costa  Borges</name>
+            <email>cesar.a.borges98@gmail.com</email>
+            <git>https://github.com/CesarAugustoBorges</git>
+        </worker>
+    </workteam>
+    <abstract>
+        <p>Para este trabalho prático foi criado um servidor web que permite utilizar as operações CRUD num base de dados em <b>mongoDB</b></p>
+        <p>Esta aplicação foi desenvolvida com o modelo arquitetural MVC</p>
+        <p>Para gerar o HTML desejado foi utilizada o <b>pug</b>, isto é, os ficheiros 
+            <xref url="views/layout.pug">layout.pug</xref> (<i>layout</i> dos seguintes ficheiros),
+            <xref url="views/filme.pug">filme.pug</xref> (geração da página de um filme)
+            <xref url="views/erro.pug">erro.pug</xref> (geração de páginas de erro), 
+            <xref url="views/form.pug">form.pug</xref> (edição de filmes) e 
+            <xref url="views/index.pug">index.pug</xref> (página inicial da aplicação)</p>
+        <p>Na página inicial encontra-se a lista dos filmes, ordenados alfabéticamente, indicando o titulo e o ano de estreia, caso o utilizador queira visualizar
+        um filme deve clicar no título do filme, caso queira adicionar um novo filme deve clicar no butão no topo
+        da página, caso queira editar ou eliminar deve clicar no botão associado ao filme que se localiza à direita
+        deste. A edição do filme também pode ser feita na culta do respetivo filme</p>
+        <p>Para não haver o carregamento de todos os filmes na página inicial, o que torna o carregamento da página lento por haver
+        o transporte de uma grande quantidade de dados foi adotado um sistema de página, em que apenas são carregados no máximo 30 filmes.
+        Para mudar de página o utilizador deve dirigir-se ao canto superior direito da página.</p>
+        <p>Em qualquer página que não seja a inicial, é possivel voltar a esta ao clicar no link que se encontra no fim da página
+        </p>
+    </abstract>
+    <deliverables>
+        <deliverable path="views/layout.pug">Layout de todas as páginas (PUG)</deliverable>
+        <deliverable path="views/index.pug">Página inicial da aplicação (PUG)</deliverable>
+        <deliverable path="views/form.pug">Página usada para alterar um filmee (PUG)</deliverable>
+        <deliverable path="views/error.pug">Página de erro (PUG)</deliverable>
+        <deliverable path="views/filme.pug">Página usada para visualizar um filme (PUG)</deliverable>
+        <deliverable path="routes/filmes.js">Roteador da aplicação (JS)</deliverable>
+        <deliverable path="public/javascripts/utils.js">Funções usadas por parte do cliente (JS)</deliverable>
+        <deliverable path="public/javascripts/axios.min.js">Biblioteca externa (JS)</deliverable>
+        <deliverable path="controllers/filmes.js">Controlador dos filmes (JS)</deliverable>
+        <deliverable path="models/filme.js">Modelo(Schema) do filme que persiste no mongo (JS)</deliverable>
+        <deliverable path="public/stylesheets/w3.css">W3 StyleSheet (CSS)</deliverable>
+        <deliverable path="public/stylesheets/myCss.css">A minha pequena StyleSheet (CSS)</deliverable>
+    </deliverables>
+</pr>

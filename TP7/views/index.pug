@@ -6,13 +6,33 @@ block content
         h3 Filmes
   .w3-container.w3-white
     .w3-container
-      a.w3-button(href="/filmes/form") Adicionar filme
-      div
-        a(href="/filmes?page="+(page-1)) 
-          <em><</em>
-        span=page
-        a(href="/filmes?page="+(page+1)) 
-          <em>></em>
+      span
+        .left
+          a.w3-button.w3-teal(href="/filmes/form") Adicionar filme
+        .right
+          a(href="/filmes?page="+(page-1))
+            <em><</em>
+          -var i = -2
+          if page + i > 0
+            a(href="/filmes?page=0")
+              <em>0</em>
+            <em>...</em>
+          -for(; i < 3; i++)
+            if page + i >= 0 && page + i <= numPages
+              if i == 0
+                a(href="/filmes?page=" + page)
+                  b=(page+i)
+                if (page + i) != numPages
+                  <em>,</em>    
+              else
+                a(href="/filmes?page=" + (page + i))=(page+i)
+                if (page + i) < numPages && i != 2
+                  <em>,</em>  
+          if page + i < numPages
+            <em>...</em>
+              a(href="/filmes?page=" + numPages)= numPages       
+          a(href="/filmes?page="+(page+1)) 
+            <em>></em>
       table.w3-table.w3-striped
           tr
             th(width="75%").w3-text-teal Titulo

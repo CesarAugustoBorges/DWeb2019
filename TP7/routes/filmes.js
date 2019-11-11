@@ -38,7 +38,7 @@ router.get('/form', (req, res) =>{
 router.get('/form/:idFilme', (req, res) =>{
   Filmes.consultar(req.params.idFilme)
   .then(dados => res.render('form', {filme : dados}))
-  .catch(erro => res.status(500).jsonp(erro))
+  .catch(erro => res.render('error', {error: erro})
 })
 
 router.post('/', (req,res) => {
@@ -46,26 +46,26 @@ router.post('/', (req,res) => {
   console.log(dados)
   Filmes.adicionar(dados)
     .then(filme => res.render('filme', {filme: filme}))
-    .catch(erro => res.status(500).jsonp(erro))
+    .catch(erro => res.render('error', {error: erro})
 })
 
 router.get('/:idFilme', function(req, res, next) {
   Filmes.consultar(req.params.idFilme)
     .then(dados => res.render('filme', {filme : dados}))
-    .catch(erro => res.status(500).jsonp(erro))
+    .catch(erro => res.render('error', {error: erro})
 });
 
 router.delete('/:idFilme', (req,res) => {
   Filmes.apagar(req.params.idFilme)
     .then(dados => {console.log(dados); res.jsonp(dados)})
-    .catch(erro => res.status(500).jsonp(erro))
+    .catch(erro => res.render('error', {error: erro})
 })
 
 router.put('/:idFilme', (req,res) => {
   console.log("para editar: " + req.body)
   Filmes.update(req.params.idFilme, req.body)
   .then(dados => {console.log(dados); res.jsonp(dados)})
-  .catch(erro => res.status(500).jsonp(erro))
+  .catch(erro => res.render('error', {error: erro})
 })
 
 module.exports = router;

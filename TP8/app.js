@@ -9,8 +9,9 @@ mongoose.connect('mongodb://127.0.0.1:27017/nobels', {useNewUrlParser: true, use
   .then(()=> console.log('Mongo ready: ' + mongoose.connection.readyState))
   .catch((erro)=> console.log('Mongo: erro na conexão: ' + erro))
 
-var indexRouter = require('./routes/index');
 var premiosRouter = require('./routes/premios');
+var categoriasRouter = require('./routes/categorias');
+var laureadosRouter = require('./routes/laureados');
 var api = require('./routes/api');
 
 var app = express();
@@ -25,8 +26,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.use('/premios', premiosRouter);
+app.use('/categorias', categoriasRouter);
+app.use('/laureados', laureadosRouter);
 app.use('/api', api);
 
 // catch 404 and forward to error handler

@@ -5,9 +5,8 @@ var Premios = require('../controllers/premios');
 router.get('/premios', function(req, res){
     var categoria = req.query.categoria
     var ano = req.query.data
-    console.log("query string " + categoria, ano)
     if(categoria && ano){
-        Premios.listarPor({category: categoria, year: { "$gte" : ano }})
+        Premios.listarPor({year: {$gt: ano}, category: categoria})
             .then(dados => res.jsonp(dados))
             .catch(erro => res.status(500).jsonp(erro))
     } else if (categoria){
@@ -15,7 +14,7 @@ router.get('/premios', function(req, res){
             .then(dados => res.jsonp(dados))
             .catch(erro => res.status(500).jsonp(erro))
     } else if (ano){
-        Premios.listarPor({year: { "$gte" : ano }})
+        Premios.listarPor({year: { $gt : ano }})
             .then(dados => res.jsonp(dados))
             .catch(erro => res.status(500).jsonp(erro))
     } else {

@@ -10,6 +10,7 @@ module.exports.listar = () => {
 module.exports.listarMin = () => {
     return Premio
         .find({}, {year: 1, category: 1, _id: -1})
+        .sort({year : -1, category : 1})
         .exec()
 }
 
@@ -49,11 +50,24 @@ module.exports.listarPor = (criterios) =>{
 }
 
 module.exports.laureados = () => {
-    return Premio.aggregate([
-        {"$unwind" : "$laureates"},
-        {"$group": { "_id" : "$laureates", "premio":{"$push": {"ano" : "$year", "categoria" : "$category"}}}},
-        {"$sort" : {"_id.firstname" : 1}}
-    ]).exec()
+    return Premio
+    .aggregate([{$unwind: "$laureates"}, 
+        {$group: 
+            {_id: "$laureates.id", 
+            firstname:{$first: "$laureates.firstname"},
+            surname:{$first: "$laureates.surname"},
+            prizes: 
+                    {$push: 
+                        {year:"$year", category:"$category"}
+                    }
+            }
+        },
+        {$project: 
+            {firstname:1, surname:1, prizes:1, _id:0}
+        }
+    ])
+    .sort({firstname:1, surname:1})
+    .exec()
 }
 
 //db.nobels.aggregate({$unwind : "$laureates"}, 

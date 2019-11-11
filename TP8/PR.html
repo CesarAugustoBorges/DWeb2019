@@ -1,0 +1,83 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="public/stylesheets/w3.css">
+</head>
+<body>
+<div class="w3-container w3-light-grey w3-text-dark-grey">
+    <div class="w3-center w3-text-black">
+<h1>Trabalho prático 8</h1>
+<h3>Api pública de laureados</h3>
+<h2>Node JS</h2>
+</div>
+<table class="w3-table">
+<tr>
+<td class="w3-left-align"><b>Supervisor: </b><a class="w3-text-indigo" href="https://www.di.uminho.pt/~jcr">José Carlos Leite Ramalho</a></td>
+<td class="w3-right-align"><b>Initial date: </b>05-11-2019<br><b>Final date: </b>11-11-2019</td>
+</tr>
+</table>
+    <h2 class="w3-text-black"><b>Workteam:</b></h2>
+<table class="w3-table w3-striped w3-bordered">
+<tr>
+<th> Identifier</th>
+<th> Name </th>
+<th> Email </th>
+</tr>
+        <tr>
+<td>a81644</td>
+<td><a class="w3-text-indigo" href="https://github.com/CesarAugustoBorges">César Augusto da Costa  Borges</a></td>
+<td>cesar.a.borges98@gmail.com</td>
+</tr>
+    </table>
+<hr>
+    <h2 class="w3-text-black"><b>Abstract:</b></h2>
+        <p>Para este trabalho prático foi criado um servidor web que expõe uma <i>API</i> pública em que os dados estão persistidos numa base de dados em <b>mongoDB</b>, 
+        com o nome <b>nobels</b> e a coleção com o nome <b>nobels</b>.</p>
+        <p>Esta aplicação foi desenvolvida com o modelo arquitetural MVC.</p>
+        <p>Embora não era necessário, foram criadas algumas vistas da informação retirada da <i>API</i>, para gerar o HTML desejado foi utilizada o <b>pug</b>, isto é, os ficheiros 
+            <a class="w3-text-indigo" href="views/layout.pug">layout.pug</a> (<i>layout</i> dos seguintes ficheiros),
+            <a class="w3-text-indigo" href="views/categorias.pug">categorias.pug</a> (lista de categorias),
+            <a class="w3-text-indigo" href="views/laureados.pug">laureados.pug</a> (lista de laureados),
+            <a class="w3-text-indigo" href="views/error.pug">error.pug</a> (geração de páginas de erro), 
+            <a class="w3-text-indigo" href="views/premio.pug">premio.pug</a> (geração da página de um prémio) e 
+            <a class="w3-text-indigo" href="views/premios.pug">premios.pug</a> (lista de premios).</p>
+        <p>As views anteriores não apresentam boa navegabilidade entre elas, teve-se mais em atenção o bom funcionamento da <i>API</i> pública
+        e dos <i>routers</i> que a utilizem.</p>
+        <p>Exemplos de uso da api:</p>
+        <p><a class="w3-text-indigo" href="http://localhost:3000/api/categorias">API das categorias </a>, 
+            <a class="w3-text-indigo" href="http://localhost:3000/categorias">view respetiva</a>
+            </p>
+        <p><a class="w3-text-indigo" href="http://localhost:3000/api/premios">API dos premios </a>, 
+            <a class="w3-text-indigo" href="http://localhost:3000/premios">view respetiva</a>
+            </p>
+        <p><a class="w3-text-indigo" href="http://localhost:3000/api/premios?categoria=medicine">API dos prémios com a categoria <b>medicine</b></a>, 
+            <a class="w3-text-indigo" href="http://localhost:3000/premios?categoria=medicine">view respetiva</a>
+            </p>
+        <p><a class="w3-text-indigo" href="http://localhost:3000/api/premios?categoria=medicine&amp;data=2016">API dos prémios com a categoria <b>medicine</b> e de 2017 a atualmente</a>, 
+            <a class="w3-text-indigo" href="http://localhost:3000/categorias?categoria=medicine&amp;data=2016">view respetiva</a>
+            </p>
+        <p><a class="w3-text-indigo" href="http://localhost:3000/api/premios/5dc59f6b6cf5cda51d132b7b">API de um prémio </a>, 
+            <a class="w3-text-indigo" href="http://localhost:3000/premios/5dc59f6b6cf5cda51d132b7b">view respetiva</a>
+            </p>
+        <p><a class="w3-text-indigo" href="http://localhost:3000/api/laureados">API dos laureados </a>, 
+            <a class="w3-text-indigo" href="http://localhost:3000/laureados">view respetiva</a>
+            </p>       
+    
+    <h2 class="w3-text-black"><b>Deliverables:</b></h2>
+<ol>
+        <li class="w3-text-indigo"><a href="prize.json">Ficheiro com os dados que foram importados para o MongoDB (JSON)</a></li>
+        <li class="w3-text-indigo"><a href="controllers/premios.js">Controller dos prémios (JS)</a></li>
+        <li class="w3-text-indigo"><a href="models/premio.js">Model de um premio (JS)</a></li>
+        <li class="w3-text-indigo"><a href="routes/api.js">API pública (JS)</a></li>
+        <li class="w3-text-indigo"><a href="routes/categorias.js">Router das categorias (JS)</a></li>
+        <li class="w3-text-indigo"><a href="routes/laureados.js">Router dos laureados (JS)</a></li>
+        <li class="w3-text-indigo"><a href="routes/premios.js">Router dos premios (JS)</a></li>
+        <li class="w3-text-indigo"><a href="views/layout.pug">Layout de todas as páginas (PUG)</a></li>
+        <li class="w3-text-indigo"><a href="views/error.pug">Página de erro (PUG)</a></li>
+        <li class="w3-text-indigo"><a href="public/stylesheets/w3.css">W3 StyleSheet (CSS)</a></li>
+    </ol>
+</div>
+</body>
+</html>

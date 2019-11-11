@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr>
+    <metadata>
+        <keyname>Node JS</keyname>
+        <title>Trabalho prático 8</title>
+        <subtitle>Api pública de laureados</subtitle>
+        <supervisor homepage="www.di.uminho.pt/~jcr">José Carlos Leite Ramalho</supervisor>
+        <bdate>05-11-2019</bdate>
+        <edate>11-11-2019</edate>
+    </metadata>
+    <workteam>
+        <worker>
+            <identifier>a81644</identifier>
+            <name>César Augusto da Costa  Borges</name>
+            <email>cesar.a.borges98@gmail.com</email>
+            <git>https://github.com/CesarAugustoBorges</git>
+        </worker>
+    </workteam>
+    <abstract>
+        <p>Para este trabalho prático foi criado um servidor web que expõe uma <i>API</i> pública em que os dados estão persistidos numa base de dados em <b>mongoDB</b>, 
+        com o nome <b>nobels</b> e a coleção com o nome <b>nobels</b>.</p>
+        <p>Esta aplicação foi desenvolvida com o modelo arquitetural MVC.</p>
+        <p>Embora não era necessário, foram criadas algumas vistas da informação retirada da <i>API</i>, para gerar o HTML desejado foi utilizada o <b>pug</b>, isto é, os ficheiros 
+            <xref url="views/layout.pug">layout.pug</xref> (<i>layout</i> dos seguintes ficheiros),
+            <xref url="views/categorias.pug">categorias.pug</xref> (lista de categorias),
+            <xref url="views/laureados.pug">laureados.pug</xref> (lista de laureados),
+            <xref url="views/error.pug">error.pug</xref> (geração de páginas de erro), 
+            <xref url="views/premio.pug">premio.pug</xref> (geração da página de um prémio) e 
+            <xref url="views/premios.pug">premios.pug</xref> (lista de premios).</p>
+        <p>As views anteriores não apresentam boa navegabilidade entre elas, teve-se mais em atenção o bom funcionamento da <i>API</i> pública
+        e dos <i>routers</i> que a utilizem.</p>
+        <p>Exemplos de uso da api:</p>
+        <p><xref url="http://localhost:3000/api/categorias">API das categorias </xref>, 
+            <xref url="http://localhost:3000/categorias">view respetiva</xref>
+            </p>
+        <p><xref url="http://localhost:3000/api/premios">API dos premios </xref>, 
+            <xref url="http://localhost:3000/premios">view respetiva</xref>
+            </p>
+        <p><xref url="http://localhost:3000/api/premios?categoria=medicine">API dos prémios com a categoria <b>medicine</b></xref>, 
+            <xref url="http://localhost:3000/premios?categoria=medicine">view respetiva</xref>
+            </p>
+        <p><xref url="http://localhost:3000/api/premios?categoria=medicine&amp;data=2016">API dos prémios com a categoria <b>medicine</b> e de 2017 a atualmente</xref>, 
+            <xref url="http://localhost:3000/categorias?categoria=medicine&amp;data=2016">view respetiva</xref>
+            </p>
+        <p><xref url="http://localhost:3000/api/premios/5dc59f6b6cf5cda51d132b7b">API de um prémio </xref>, 
+            <xref url="http://localhost:3000/premios/5dc59f6b6cf5cda51d132b7b">view respetiva</xref>
+            </p>
+        <p><xref url="http://localhost:3000/api/laureados">API dos laureados </xref>, 
+            <xref url="http://localhost:3000/laureados">view respetiva</xref>
+            </p>       
+    </abstract>
+    <deliverables>
+        <deliverable path="prize.json">Ficheiro com os dados que foram importados para o MongoDB (JSON)</deliverable>
+        <deliverable path="controllers/premios.js">Controller dos prémios (JS)</deliverable>
+        <deliverable path="models/premio.js">Model de um premio (JS)</deliverable>
+        <deliverable path="routes/api.js">API pública (JS)</deliverable>
+        <deliverable path="routes/categorias.js">Router das categorias (JS)</deliverable>
+        <deliverable path="routes/laureados.js">Router dos laureados (JS)</deliverable>
+        <deliverable path="routes/premios.js">Router dos premios (JS)</deliverable>
+        <deliverable path="views/layout.pug">Layout de todas as páginas (PUG)</deliverable>
+        <deliverable path="views/error.pug">Página de erro (PUG)</deliverable>
+        <deliverable path="public/stylesheets/w3.css">W3 StyleSheet (CSS)</deliverable>
+    </deliverables>
+</pr>

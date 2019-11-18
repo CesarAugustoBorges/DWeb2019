@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr>
+    <metadata>
+        <keyname>Node JS</keyname>
+        <title>Trabalho prático 8</title>
+        <subtitle>Api pública de laureados</subtitle>
+        <supervisor homepage="www.di.uminho.pt/~jcr">José Carlos Leite Ramalho</supervisor>
+        <bdate>12-11-2019</bdate>
+        <edate>18-11-2019</edate>
+    </metadata>
+    <workteam>
+        <worker>
+            <identifier>a81644</identifier>
+            <name>César Augusto da Costa  Borges</name>
+            <email>cesar.a.borges98@gmail.com</email>
+            <git>https://github.com/CesarAugustoBorges</git>
+        </worker>
+    </workteam>
+    <abstract>
+        <p>Para este trabalho prático foi criado script que substitui o <b>mongoimport</b>, o 
+        <xref url="myMongoImport.js"><b>myMongoImport</b></xref>, para o utilizar deve utilizar o comando
+        <u>"node myMongoImport &lt;dbName&gt; &lt;colName&gt; &lt;filePath&gt; [--&lt;option&gt;=&lt;value&gt;]"</u>, em que 
+        a única opção disponivel é a de alterar o port no qual o mongo se localiza, ou seja, "--port=27017"</p>
+
+        
+    </abstract>
+    <deliverables>
+        <deliverable path="myMongoImport.js">Substituto da função do mongoimport (JS)</deliverable>
+        <deliverable path="prize.json">Usado para testar o script (JSON)</deliverable>
+        <deliverable path="testImport.json">Usado para testar o script (JSON)</deliverable>
+    </deliverables>
+</pr>

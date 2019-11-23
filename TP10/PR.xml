@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr>
+    <metadata>
+        <keyname>Node JS</keyname>
+        <title>Trabalho prático 8</title>
+        <subtitle>Api pública de laureados</subtitle>
+        <supervisor homepage="www.di.uminho.pt/~jcr">José Carlos Leite Ramalho</supervisor>
+        <bdate>19-11-2019</bdate>
+        <edate>25-11-2019</edate>
+    </metadata>
+    <workteam>
+        <worker>
+            <identifier>a81644</identifier>
+            <name>César Augusto da Costa  Borges</name>
+            <email>cesar.a.borges98@gmail.com</email>
+            <git>https://github.com/CesarAugustoBorges</git>
+        </worker>
+    </workteam>
+    <abstract>
+        <p>Para este trabalho prático foi criado um gestor de ficheiros.</p>
+        <p>Tal como pedido, o gestor desenvolvido na aula já disponibiliza o upload de multiplos ficheiros</p>
+    </abstract>
+    <deliverables>
+        <deliverable path="routes/api.js">API pública do gestor de ficheiros (JS)</deliverable>
+    </deliverables>
+</pr>

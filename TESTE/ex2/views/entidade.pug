@@ -1,0 +1,65 @@
+extends layout
+
+block content
+  .w3-card-4
+    header.w3-container.w3-light-blue
+      h1= entidade.designacao
+    button.w3-button.w3-teal(onclick="window.history.back()") voltar atras
+    a.w3-button.w3-teal(href='/') página inicial
+    .w3-container.w3-light-grey
+      table.w3-table-all
+        tr
+          th.w3-center Sigla
+          th.w3-center Estado
+          th.w3-center Sioe
+          th.w3-center International
+        tr
+          th.w3-center=entidade.sigla
+          th.w3-center=entidade.estado
+          th.w3-center=entidade.sioe
+          th.w3-center=entidade.international
+  
+    .w3-container
+      h4 Tipologias:
+        if tipologias == undefined || tipologias.length == 0
+          p Não possui nenhuma tipologia
+        else 
+          table.w3-table-all
+            tr
+              th.w3-center Sigla
+              th.w3-center Designacao
+            each tipologia in tipologias
+              .w3-light-grey
+                tr
+                  th.w3-center
+                    a(href= "http://localhost:3000/tipologia/"+ tipologia.id)=tipologia.sigla
+                  th.w3-center=tipologia.designacao
+    .w3-container
+      h4 Dono:
+        if dono == undefined || dono.length == 0
+          p Não é dona de nenhuma atividade
+        else 
+         table.w3-table-all
+          tr
+            th.w3-center Codigo
+            th.w3-center Titulo
+          each elemento in dono
+            .w3-light-grey
+              tr
+                th.w3-center
+                  a(href="http://clav-api.dglab.gov.pt/api/classes/c"+ elemento.codigo +"?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1Nzg4NjAwNTQsImV4cCI6MTU4MTQ1MjA1NH0.HIlH4_Ao6504qaLhhbZ2_OtDzaZaG5FeYy-Yc2d9lwQ")= elemento.codigo
+                th.w3-center=elemento.titulo
+    .w3-container
+      h4 Participante:
+        if particante == undefined || particante.length == 0
+          p Não participa em nenhuma atividade
+        else 
+          table.w3-table-all
+            tr
+              th.w3-center Sigla
+              th.w3-center Designacao
+            each elemento in particante
+              .w3-light-grey
+                th.w3-center
+                  a(href= "http://localhost:3000/tipologia/"+ elemento.id)=elemento.sigla
+                th.w3-center=elemento.designacao

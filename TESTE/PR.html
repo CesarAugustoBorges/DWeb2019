@@ -1,0 +1,57 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="ex2/public/stylesheets/w3.css">
+</head>
+<body>
+<div class="w3-container w3-light-grey w3-text-dark-grey">
+    <div class="w3-center w3-text-black">
+<h1>Teste</h1>
+<h3>Arquivo de Música Digital e CLAV </h3>
+<h2>Node JS</h2>
+</div>
+<table class="w3-table">
+<tr>
+<td class="w3-left-align"><b>Supervisor: </b><a class="w3-text-indigo" href="https://www.di.uminho.pt/~jcr">José Carlos Leite Ramalho</a></td>
+<td class="w3-right-align"><b>Initial date: </b>16-01-2019<br><b>Final date: </b>16-01-2019</td>
+</tr>
+</table>
+    <h2 class="w3-text-black"><b>Workteam:</b></h2>
+<table class="w3-table w3-striped w3-bordered">
+<tr>
+<th> Identifier</th>
+<th> Name </th>
+<th> Email </th>
+</tr>
+        <tr>
+<td>a81644</td>
+<td><a class="w3-text-indigo" href="https://github.com/CesarAugustoBorges">César Augusto da Costa  Borges</a></td>
+<td>cesar.a.borges98@gmail.com</td>
+</tr>
+    </table>
+<hr>
+    <h2 class="w3-text-black"><b>Abstract:</b></h2>
+        <p>De seguida irei explicar como inserir os dados na base de dados MongoDB e como executar o servidor</p>
+        <p>Assume-se que esteja numa linha de comandos ou numa consola, primeiro deve mudar-se para a pasta ex1 (cd ex1),
+        segundo deve instalar todos os modulos (npm i),
+        terceiro deve inserir os dados no ficheiro JSON na base de dados (mongoimport -d musicas -c musicas --jsonArray arquivo-musical.js),
+        quarto deve executar o servidor (npm start)</p>
+        <p>O ficheiro JSON foi convertido do ficheiro XML utilizando o site <a class="w3-text-indigo" href="https://www.convertjson.com/xml-to-json.htm">convertjson.com</a>
+        e removendo o campo obra como raiz</p>
+        <p> Para a query que envolve um id foi escolhido o id fornecido pelo ficheiro JSON e não o gerado pelo MongoDB.</p>
+        <p> Quanto ao exercício 2, o ficheiro com as respostas às perguntas de aquecimento é o Respostas.txt </p>
+        <p> Para iniciar o servidor de interface deve-se dirigir-se à pasta ex2 e executar o comando npm start </p>
+        <p> Qualquer um destes servidores correram na porta por defeito, ou seja 3000, caso queira aceder à interface Web do exercicio 2 deve aceder o link
+        <a class="w3-text-indigo" href="http://localhost:3000/"> http://localhost:3000/ </a>, caso seja para testar os dados do exercício 1 deve usar este path.</p>
+    
+    <h2 class="w3-text-black"><b>Deliverables:</b></h2>
+<ol>
+        <li class="w3-text-indigo"><a href="ex1/arquivo-musica-digital.xml">Ficheiro de dados fornecidos pelo docente (XML)</a></li>
+        <li class="w3-text-indigo"><a href="ex1/arquivo-musical.js">Ficheiro com os dados forncidos tratados (JS)</a></li>
+        <li class="w3-text-indigo"><a href="ex2/Respostas.TXT">Respostas às perguntas de aquecimento (TXT)</a></li>
+    </ol>
+</div>
+</body>
+</html>

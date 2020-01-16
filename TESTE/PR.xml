@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr>
+    <metadata>
+        <keyname>Node JS</keyname>
+        <title>Teste</title>
+        <subtitle>Arquivo de Música Digital e CLAV </subtitle>
+        <supervisor homepage="www.di.uminho.pt/~jcr">José Carlos Leite Ramalho</supervisor>
+        <bdate>16-01-2019</bdate>
+        <edate>16-01-2019</edate>
+    </metadata>
+    <workteam>
+        <worker>
+            <identifier>a81644</identifier>
+            <name>César Augusto da Costa  Borges</name>
+            <email>cesar.a.borges98@gmail.com</email>
+            <git>https://github.com/CesarAugustoBorges</git>
+        </worker>
+    </workteam>
+    <abstract>
+        <p>De seguida irei explicar como inserir os dados na base de dados MongoDB e como executar o servidor</p>
+        <p>Assume-se que esteja numa linha de comandos ou numa consola, primeiro deve mudar-se para a pasta ex1 (cd ex1),
+        segundo deve instalar todos os modulos (npm i),
+        terceiro deve inserir os dados no ficheiro JSON na base de dados (mongoimport -d musicas -c musicas --jsonArray arquivo-musical.js),
+        quarto deve executar o servidor (npm start)</p>
+        <p>O ficheiro JSON foi convertido do ficheiro XML utilizando o site <xref url="https://www.convertjson.com/xml-to-json.htm">convertjson.com</xref>
+        e removendo o campo obra como raiz</p>
+        <p> Para a query que envolve um id foi escolhido o id fornecido pelo ficheiro JSON e não o gerado pelo MongoDB.</p>
+        <p> Quanto ao exercício 2, o ficheiro com as respostas às perguntas de aquecimento é o Respostas.txt </p>
+        <p> Para iniciar o servidor de interface deve-se dirigir-se à pasta ex2 e executar o comando npm start </p>
+        <p> Qualquer um destes servidores correram na porta por defeito, ou seja 3000, caso queira aceder à interface Web do exercicio 2 deve aceder o link
+        <xref url="http://localhost:3000/"> http://localhost:3000/ </xref>, caso seja para testar os dados do exercício 1 deve usar este path.</p>
+    </abstract>
+    <deliverables>
+        <deliverable path="ex1/arquivo-musica-digital.xml">Ficheiro de dados fornecidos pelo docente (XML)</deliverable>
+        <deliverable path="ex1/arquivo-musical.js">Ficheiro com os dados forncidos tratados (JS)</deliverable>
+        <deliverable path="ex2/Respostas.TXT">Respostas às perguntas de aquecimento (TXT)</deliverable>
+    </deliverables>
+</pr>

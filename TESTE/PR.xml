@@ -29,6 +29,7 @@
         <p> Para iniciar o servidor de interface deve-se dirigir-se à pasta ex2 e executar o comando npm start </p>
         <p> Qualquer um destes servidores correram na porta por defeito, ou seja 3000, caso queira aceder à interface Web do exercicio 2 deve aceder o link
         <xref url="http://localhost:3000/"> http://localhost:3000/ </xref>, caso seja para testar os dados do exercício 1 deve usar este path.</p>
+        <p> O servidor de MongoDB é usado na sua porta por defeito </p>
     </abstract>
     <deliverables>
         <deliverable path="ex1/arquivo-musica-digital.xml">Ficheiro de dados fornecidos pelo docente (XML)</deliverable>

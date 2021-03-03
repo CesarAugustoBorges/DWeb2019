@@ -14,7 +14,7 @@
     "jsonfile": "^5.0.0",
     "morgan": "~1.9.1",
     "nanoid": "^2.1.6",
-    "pug": "^2.0.4"
+    "pug": "^3.0.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.4"
